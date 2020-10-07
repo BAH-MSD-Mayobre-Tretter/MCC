@@ -1,0 +1,5 @@
+package com.bah.customerapi.domain;
+
+public class Customer {
+
+}
