@@ -17,9 +17,8 @@ public interface CustomerService {
 	
 	public Customer findById(Long id);
 	
-	public Collection<Customer> findAll();
+	public Iterable<Customer> findAll();
 	
-	public Collection<Customer> findByName(String name);
-	
-	public long size();
+	public Iterable<Customer> findByName(String name);
+
 }
