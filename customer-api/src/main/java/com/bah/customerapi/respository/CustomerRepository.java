@@ -12,4 +12,5 @@ public interface CustomerRepository {
 	public Collection<Customer> findAll();
 	
 	public Collection<Customer> findByName(String name);
+
 }

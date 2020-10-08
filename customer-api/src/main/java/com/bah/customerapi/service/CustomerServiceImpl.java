@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.bah.customerapi.domain.Customer;
 import com.bah.customerapi.respository.CustomerRepository;
 
-public class CustomerServiceImpl implements CustomerService {
+public abstract class CustomerServiceImpl implements CustomerService {
 	
 	private CustomerRepository customerRepository;
 	
