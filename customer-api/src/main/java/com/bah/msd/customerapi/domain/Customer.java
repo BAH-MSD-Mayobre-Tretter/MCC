@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 // Designate that the class should be managed by JPA
 
-@Table(name = "CUSTOMERS'")
+@Table(name = "CUSTOMERS")
 // Tell JPA what database table name to use for the class
 
 public class Customer {
