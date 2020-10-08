@@ -1,9 +1,12 @@
 package com.bah.customerapi.respository;
 
-import java.util.*;
+import java.util.Collection;
+
+import org.springframework.stereotype.Repository;
 
 import com.bah.customerapi.domain.Customer;
 
+@Repository
 public interface CustomerRepository {
 	public Customer createCustomer(Customer customer);
 	

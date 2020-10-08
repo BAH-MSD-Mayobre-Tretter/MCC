@@ -1,10 +1,10 @@
 package com.bah.customerapi.service;
 
-import java.util.Collection;
+import org.springframework.stereotype.Service;
 
-import com.bah.customerapi.domain.Customer;
 import com.bah.customerapi.respository.CustomerRepository;
 
+@Service
 public abstract class CustomerServiceImpl implements CustomerService {
 	
 	private CustomerRepository customerRepository;
