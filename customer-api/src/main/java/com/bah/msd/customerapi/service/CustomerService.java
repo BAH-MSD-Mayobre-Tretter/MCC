@@ -15,10 +15,8 @@ import com.bah.msd.customerapi.domain.Customer;
 @Service
 public interface CustomerService {
 	
-	public Customer findById(Long id);
-	
 	public Iterable<Customer> findAll();
-	
-	public Iterable<Customer> findByName(String name);
+
+	Customer findById(long id);
 
 }
