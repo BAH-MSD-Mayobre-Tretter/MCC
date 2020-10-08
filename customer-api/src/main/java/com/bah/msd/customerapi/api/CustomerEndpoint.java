@@ -13,8 +13,8 @@ import com.bah.msd.customerapi.domain.Customer;
 import com.bah.msd.customerapi.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
-public class CustomerController {
+@RequestMapping("/customers")
+public class CustomerEndpoint {
 	
 	@Autowired
 	CustomerService customerService;
