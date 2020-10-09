@@ -1,27 +1,23 @@
 package com.bah.msd.customerapi.domain;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Customer {
 	
 	
 	@Id
-	// Mark the id field as the primary key
-	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// Tell JPA how it's going to be generated
 	private Long id;
 	
 	private String name;
 	private String password;
 	private String email;
+	
 	
 	public String getEmail() {
 		return email;
@@ -54,7 +50,7 @@ public class Customer {
 //		this.name = name;
 //		this.password = password;
 //		this.email = email;
-//	}
+//	}	// Tell JPA how it's going to be generated
 	
 	@Override
     public String toString() {

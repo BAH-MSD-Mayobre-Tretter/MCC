@@ -17,6 +17,8 @@ public class Event {
 	private String title;
 	private String description;
 	private Date event_date;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,6 +43,7 @@ public class Event {
 	public void setEvent_date(Date event_date) {
 		this.event_date = event_date;
 	}
+	
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", event_date=" + event_date

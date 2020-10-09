@@ -12,12 +12,13 @@ public class Registration {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long Id;
+	
 	private Long event_id;
 	private Long customer_id;
 	private Date registration_date;
 	private String notes;
+	
 	
 	public Long getId() {
 		return Id;
