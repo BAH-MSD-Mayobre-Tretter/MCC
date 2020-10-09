@@ -22,4 +22,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return (customerRepository.findById(id)).get();
 	}
 
+	@Override
+	public Customer save(Customer newCustomer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

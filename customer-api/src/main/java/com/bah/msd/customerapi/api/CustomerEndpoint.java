@@ -35,11 +35,11 @@ public class CustomerEndpoint {
 	
 	
 	/* Lifted DIRECTLY FROM LAB 6 CUSTOMERAPI.JAVA
-	 * ALL METHODS BASED ON REPO NOT SERVICE
+	 * ALL METHODS BASED ON REPO NOT SERVICE */
 
 	@GetMapping("/{customerId}")
-	public Optional<Customer> getCustomerById(@PathVariable("customerId") long id){
-		return repo.findById(id);
+	public Customer getCustomerById(@PathVariable("customerId") long id){
+		return customerService.findById(id);
 	}
 	
 	@PostMapping
@@ -49,7 +49,7 @@ public class CustomerEndpoint {
 			return ResponseEntity.badRequest().build();
 		}
 		
-		newCustomer = repo.save(newCustomer);
+		newCustomer = customerService.save(newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
 		ResponseEntity<?> response=ResponseEntity.created(location).build();
 		return response;
@@ -60,10 +60,9 @@ public class CustomerEndpoint {
 		if (newCustomer.getId()!=customerId || newCustomer.getName()==null || newCustomer.getEmail() == null) {
 			return ResponseEntity.badRequest().build();
 		}
-		newCustomer=repo.save(newCustomer);
+		newCustomer=customerService.save(newCustomer);
 		return ResponseEntity.ok().build();	
-		
-	*/
+	}
 	
 	
 	
@@ -75,11 +74,11 @@ public class CustomerEndpoint {
 //		return echo;
 //	}
 	
-	@GetMapping("/{id}")
-	public Customer findById(@PathVariable long id) {
-		System.out.println("findById: " + id);
-		return customerService.findById(id);
-	}
+//	@GetMapping("/{id}")
+//	public Customer findById(@PathVariable long id) {
+//		System.out.println("findById: " + id);
+//		return customerService.findById(id);
+//	}
 //	Need CRUD
 //	CREATE
 //	READ

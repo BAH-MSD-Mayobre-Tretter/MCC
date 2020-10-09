@@ -17,6 +17,8 @@ public interface CustomerService {
 	public Iterable<Customer> findAll();
 
 	Customer findById(long id);
+
+	public Customer save(Customer newCustomer);
 	
 	
 	/*
