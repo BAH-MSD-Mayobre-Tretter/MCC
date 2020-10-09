@@ -24,16 +24,16 @@ import com.bah.msd.customerapi.service.CustomerService;
 public class CustomerEndpoint {
 
 	@Autowired
-	private CustomerService customerService;
+	private CustomerService service;
 
 	@GetMapping("/")
 	public Iterable<Customer> all() {
-		return customerService.findAll();
+		return service.findAll();
 	}
 
 	@GetMapping("/{customerId}")
 	public Customer getCustomerById(@PathVariable("customerId") long id) {
-		return customerService.findById(id);
+		return service.findById(id);
 	}
 
 	@PostMapping
@@ -44,7 +44,7 @@ public class CustomerEndpoint {
 //			return ResponseEntity.badRequest().build();
 //		}
 
-		Customer newCustomer = customerService.save(customer);
+		Customer newCustomer = service.save(customer);
 		System.out.println("***** new customer " + newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(newCustomer.getId()).toUri();
@@ -65,7 +65,7 @@ public class CustomerEndpoint {
 	public ResponseEntity<?> putCustomer(
 			@RequestBody Customer customer) {
 		System.out.println("***** updated customer " + customer);
-		Customer newCustomer = customerService.save(customer);
+		Customer newCustomer = service.save(customer);
 		System.out.println("***** new customer " + newCustomer);
 		return ResponseEntity.ok().build();
 	}
@@ -74,7 +74,7 @@ public class CustomerEndpoint {
 	public ResponseEntity<?> deleteCustomer(
 		@PathVariable long id) {
 //		System.out.println("***** deleted customerId " + customerId;
-		customerService.deleteCustomer(id);
+		service.deleteCustomer(id);
 		return ResponseEntity.ok().build();
 	}
 

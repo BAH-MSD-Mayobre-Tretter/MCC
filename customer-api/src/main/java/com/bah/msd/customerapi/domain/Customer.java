@@ -65,5 +65,9 @@ public class Customer {
                 ", password='" + password + '\'' +
                 '}';
 	}
+//	public Customer get() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 }
