@@ -13,10 +13,18 @@ import com.bah.msd.customerapi.domain.Customer;
 // Contract Obligation
 
 @Service
+/// what does @ service do?
+
 public interface CustomerService {
 	
 	public Iterable<Customer> findAll();
 
 	Customer findById(long id);
+	
+	
+	/*
+	 * public void SaveCustomer(Customer customer);
+	 * public Optional<Purchase> findCustomerById(long id);
+	 */
 
 }
