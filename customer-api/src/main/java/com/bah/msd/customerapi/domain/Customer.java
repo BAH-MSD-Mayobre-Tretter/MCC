@@ -11,9 +11,6 @@ import javax.persistence.Table;
 @Entity
 // Designate that the class should be managed by JPA
 
-@Table(name = "CUSTOMERS")
-// Tell JPA what database table name to use for the class
-
 public class Customer {
 	
 	
@@ -22,10 +19,8 @@ public class Customer {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	// Tell JPA how it's going to be generated
-	
 	private Long id;
 	
-	@Column(name="CUSTOMER_NAME")
 	private String name;
 	private String password;
 	private String email;
@@ -55,13 +50,13 @@ public class Customer {
 		this.password = password;
 	}
 	
-	public Customer(Long id, String name, String password, String email) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.email = email;
-	}
+//	public Customer(Long id, String name, String password, String email) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.password = password;
+//		this.email = email;
+//	}
 	
 	@Override
     public String toString() {
