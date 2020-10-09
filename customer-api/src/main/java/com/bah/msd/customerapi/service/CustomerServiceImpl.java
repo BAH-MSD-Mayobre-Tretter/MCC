@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer save(Customer newCustomer) {
 		// TODO Auto-generated method stub
-		return null;
+		return customerRepository.save(newCustomer);
 	}
 
 }

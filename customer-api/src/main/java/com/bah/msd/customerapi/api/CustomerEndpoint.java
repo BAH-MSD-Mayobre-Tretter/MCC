@@ -21,59 +21,51 @@ import com.bah.msd.customerapi.service.CustomerService;
 @RestController
 @RequestMapping("/customers")
 public class CustomerEndpoint {
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
-	// do we autowire in Service or Repo?
-	// lab 6 CustomerAPI autowires Repo
-	
+
 	@GetMapping("/")
 	public Iterable<Customer> all() {
 		return customerService.findAll();
 	}
-	
-	
-	/* Lifted DIRECTLY FROM LAB 6 CUSTOMERAPI.JAVA
-	 * ALL METHODS BASED ON REPO NOT SERVICE */
 
 	@GetMapping("/{customerId}")
-	public Customer getCustomerById(@PathVariable("customerId") long id){
+	public Customer getCustomerById(@PathVariable("customerId") long id) {
 		return customerService.findById(id);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<?> addCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder uri) {
-		if (newCustomer.getId()!=0 || newCustomer.getName()==null || newCustomer.getEmail() == null) {
-			// reject - we'll assign the customer id
-			return ResponseEntity.badRequest().build();
-		}
-		
-		newCustomer = customerService.save(newCustomer);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCustomer.getId()).toUri();
-		ResponseEntity<?> response=ResponseEntity.created(location).build();
+	public ResponseEntity<?> addCustomer(@RequestBody Customer customer, UriComponentsBuilder uri) {
+		System.out.println("***** customer " + customer);
+//		if (customer.getId()!=0 || customer.getName()==null || customer.getEmail() == null) {
+//			reject - we'll assign the customer id
+//			return ResponseEntity.badRequest().build();
+//		}
+
+		Customer newCustomer = customerService.save(customer);
+		System.out.println("***** new customer " + newCustomer);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(newCustomer.getId()).toUri();
+		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		return response;
 	}
 
-	@PutMapping("/{customerId}")
-	public ResponseEntity<?> putCustomer(@RequestBody Customer newCustomer,@PathVariable("customerId") long customerId){
-		if (newCustomer.getId()!=customerId || newCustomer.getName()==null || newCustomer.getEmail() == null) {
-			return ResponseEntity.badRequest().build();
-		}
-		newCustomer=customerService.save(newCustomer);
-		return ResponseEntity.ok().build();	
+	@PutMapping
+	public ResponseEntity<?> putCustomer(@RequestBody Customer customer) {
+		System.out.println("***** updated customer " + customer);
+
+		Customer newCustomer = customerService.save(customer);
+		System.out.println("***** new customer " + newCustomer);
+		return ResponseEntity.ok().build();
 	}
-	
-	
-	
-	
-	
+
 //	@GetMapping("/echo")
 //	public String echo() {
 //		String echo = "Hello";
 //		return echo;
 //	}
-	
+
 //	@GetMapping("/{id}")
 //	public Customer findById(@PathVariable long id) {
 //		System.out.println("findById: " + id);
@@ -82,5 +74,5 @@ public class CustomerEndpoint {
 //	Need CRUD
 //	CREATE
 //	READ
-	
+
 }

@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-// Designate that the class should be managed by JPA
-
 public class Customer {
 	
 	
