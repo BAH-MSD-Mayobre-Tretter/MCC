@@ -21,6 +21,8 @@ public interface CustomerService {
 	public Customer save(Customer newCustomer);
 
 	public void deleteById(long id);
+
+	public void deleteCustomer(long id);
 	
 	
 	/*

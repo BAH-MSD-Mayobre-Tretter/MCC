@@ -70,12 +70,12 @@ public class CustomerEndpoint {
 		return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping("/{customerId}")
-	public ResponseEntity<?> deleteCustomerById(
-			@PathVariable("customerId") long id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteCustomer(
+		@PathVariable long id) {
 //		System.out.println("***** deleted customerId " + customerId;
-		customerService.deleteById(id);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		customerService.deleteCustomer(id);
+		return ResponseEntity.ok().build();
 	}
 
 //	@GetMapping("/echo")

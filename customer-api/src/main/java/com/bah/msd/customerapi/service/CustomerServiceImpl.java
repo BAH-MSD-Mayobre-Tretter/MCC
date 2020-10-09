@@ -29,9 +29,15 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
+	public void deleteCustomer(long id) {
+		// TODO Auto-generated method stub
+		customerRepository.deleteById(id);
+	}
+
+	@Override
 	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		
+		customerRepository.deleteById(id);
 	}
 
 }
