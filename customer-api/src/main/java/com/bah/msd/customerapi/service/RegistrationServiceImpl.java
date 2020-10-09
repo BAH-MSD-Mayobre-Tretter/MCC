@@ -1,10 +1,12 @@
 package com.bah.msd.customerapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bah.msd.customerapi.domain.Registration;
 import com.bah.msd.customerapi.respository.RegistrationRepository;
 
+@Service
 public class RegistrationServiceImpl implements RegistrationService {
 	
 	@Autowired

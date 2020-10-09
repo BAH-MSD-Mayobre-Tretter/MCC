@@ -13,8 +13,10 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 //	
 //	public Collection<Customer> findAll();
 //	
-//	public Collection<Customer> findByName(String name);
+	Customer findByName(String name);
 //	boolean existsByEmail(String email);
 //	boolean existsByName(String name);
+	int deleteByName(String name);
+	int deleteById(long id);
 
 }

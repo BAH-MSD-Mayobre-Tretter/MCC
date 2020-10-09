@@ -74,7 +74,8 @@ public class CustomerEndpoint {
 	public ResponseEntity<?> deleteCustomer(
 		@PathVariable long id) {
 //		System.out.println("***** deleted customerId " + customerId;
-		service.deleteCustomer(id);
+		int results = service.deleteById(id);
+		System.out.println("**** customer id deleted: " + id + " - " + results);
 		return ResponseEntity.ok().build();
 	}
 
