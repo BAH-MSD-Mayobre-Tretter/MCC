@@ -49,5 +49,11 @@ public class Registration {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+	
+	@Override
+	public String toString() {
+		return "Registration [Id=" + Id + ", event_id=" + event_id + ", customer_id=" + customer_id
+				+ ", registration_date=" + registration_date + ", notes=" + notes + "]";
+	}
 
 }
