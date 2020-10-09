@@ -20,7 +20,7 @@ import com.bah.msd.customerapi.domain.Registration;
 import com.bah.msd.customerapi.service.RegistrationService;
 
 @RestController
-@RequestMapping("/registrations")
+@RequestMapping("/api/registrations")
 public class RegistrationEndpoint {
 
 		@Autowired
