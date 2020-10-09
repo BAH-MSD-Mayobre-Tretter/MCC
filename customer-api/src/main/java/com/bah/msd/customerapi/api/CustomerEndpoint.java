@@ -60,11 +60,12 @@ public class CustomerEndpoint {
 //		return ResponseEntity.ok().build();
 //	}
 	
-	@PutMapping("/{customerId}")
+	@PutMapping
 	public ResponseEntity<?> putCustomer(
-			@RequestBody Customer newCustomer,
-			@PathVariable("customerId") long customerId) {
-		newCustomer = customerService.save(newCustomer);
+			@RequestBody Customer customer) {
+		System.out.println("***** updated customer " + customer);
+		Customer newCustomer = customerService.save(customer);
+		System.out.println("***** new customer " + newCustomer);
 		return ResponseEntity.ok().build();
 	}
 
