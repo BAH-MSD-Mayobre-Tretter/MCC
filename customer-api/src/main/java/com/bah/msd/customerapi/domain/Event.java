@@ -16,7 +16,7 @@ public class Event {
 	
 	private String title;
 	private String description;
-	private Date date;
+	private Date event_date;
 	
 	public Long getId() {
 		return id;
@@ -37,10 +37,10 @@ public class Event {
 		this.description = description;
 	}
 	public Date getDate() {
-		return date;
+		return event_date;
 	}
 	public void setDate(Date date) {
-		this.date = date;
+		this.event_date = event_date;
 	}
 	
 }
