@@ -17,6 +17,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 //	boolean existsByEmail(String email);
 //	boolean existsByName(String name);
 	int deleteByName(String name);
-	int deleteById(long id);
+	Long deleteById(long id);
 
 }
