@@ -14,10 +14,6 @@ public interface CustomerService {
 
 	public int deleteByName(String name);
 	
-	
-	/*
-	 * public void SaveCustomer(Customer customer);
-	 * public Optional<Purchase> findCustomerById(long id);
-	 */
+//	change deleteEvent to deleteId for all services
 
 }

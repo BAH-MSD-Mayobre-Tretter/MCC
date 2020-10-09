@@ -1,5 +1,9 @@
 package com.bah.msd.customerapi.respository;
 
-public interface EventRepository {
+import com.bah.msd.customerapi.domain.Event;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface EventRepository extends CrudRepository<Event, Long> {
 
 }

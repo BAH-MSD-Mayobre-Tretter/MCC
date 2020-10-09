@@ -11,5 +11,6 @@ public interface RegistrationService {
 	public Registration save(Registration registration);
 
 	public void deleteRegistration(long id);
+//	change deleteEvent to deleteId for all services
 
 }
