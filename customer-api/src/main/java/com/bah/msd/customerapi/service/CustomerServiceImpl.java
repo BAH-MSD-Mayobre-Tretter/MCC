@@ -28,4 +28,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.save(newCustomer);
 	}
 
+	@Override
+	public void deleteById(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
