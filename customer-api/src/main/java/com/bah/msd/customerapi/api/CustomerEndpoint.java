@@ -51,12 +51,20 @@ public class CustomerEndpoint {
 		return response;
 	}
 
-	@PutMapping
-	public ResponseEntity<?> putCustomer(@RequestBody Customer customer) {
-		System.out.println("***** updated customer " + customer);
-
-		Customer newCustomer = customerService.save(customer);
-		System.out.println("***** new customer " + newCustomer);
+//	@PutMapping
+//	public ResponseEntity<?> putCustomer(@RequestBody Customer customer) {
+//		System.out.println("***** updated customer " + customer);
+//
+//		Customer newCustomer = customerService.save(customer);
+//		System.out.println("***** new customer " + newCustomer);
+//		return ResponseEntity.ok().build();
+//	}
+	
+	@PutMapping("/{customerId}")
+	public ResponseEntity<?> putCustomer(
+			@RequestBody Customer newCustomer,
+			@PathVariable("customerId") long customerId) {
+		newCustomer = customerService.save(newCustomer);
 		return ResponseEntity.ok().build();
 	}
 
