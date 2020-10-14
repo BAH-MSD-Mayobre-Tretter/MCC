@@ -35,6 +35,11 @@ public class CustomerEndpoint {
 	public Customer getCustomerById(@PathVariable("customerId") long id) {
 		return service.findById(id);
 	}
+	
+	@GetMapping("/byname/{customerName}")
+	public Customer getCustomerByName(@PathVariable("customerName") String name) {
+		return service.findByName(name);
+	}
 
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody Customer customer, UriComponentsBuilder uri) {
