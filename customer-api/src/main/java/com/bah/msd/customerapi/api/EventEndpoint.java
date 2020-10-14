@@ -24,7 +24,7 @@ public class EventEndpoint {
 	@Autowired
 	private EventService service;
 
-	@GetMapping("/")
+	@GetMapping
 	public Iterable<Event> all() {
 		return service.findAll();
 	}
@@ -59,10 +59,11 @@ public class EventEndpoint {
 //		return ResponseEntity.ok().build();
 //	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<?> putEvent(
+			@PathVariable long id,
 			@RequestBody Event event) {
-		System.out.println("***** updated event " + event);
+		System.out.println("***** updated event " + event + " eventID: " + id);
 		Event newEvent = service.save(event);
 		return ResponseEntity.ok().build();
 	}

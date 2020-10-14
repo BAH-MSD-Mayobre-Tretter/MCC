@@ -26,7 +26,7 @@ public class RegistrationEndpoint {
 		@Autowired
 		private RegistrationService service;
 
-		@GetMapping("/")
+		@GetMapping
 		public Iterable<Registration> all() {
 			return service.findAll();
 		}
@@ -61,10 +61,11 @@ public class RegistrationEndpoint {
 //			return ResponseEntity.ok().build();
 //		}
 		
-		@PutMapping
+		@PutMapping("/{id}")
 		public ResponseEntity<?> putRegistration(
+				@PathVariable long id,
 				@RequestBody Registration registration) {
-			System.out.println("***** updated registration " + registration);
+			System.out.println("***** updated registration " + registration + " registrationId: " + id);
 			Registration newRegistration = service.save(registration);
 			return ResponseEntity.ok().build();
 		}

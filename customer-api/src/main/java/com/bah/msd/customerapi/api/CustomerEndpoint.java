@@ -1,9 +1,9 @@
 package com.bah.msd.customerapi.api;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,39 +17,39 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.bah.msd.customerapi.domain.Customer;
-import com.bah.msd.customerapi.service.CustomerService;
+import com.bah.msd.customerapi.respository.CustomerRepository;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerEndpoint {
 
 	@Autowired
-	private CustomerService service;
+	CustomerRepository repo;
 
-	@GetMapping("/")
+	@GetMapping
 	public Iterable<Customer> all() {
-		return service.findAll();
+		return repo.findAll();
 	}
 
 	@GetMapping("/{customerId}")
-	public Customer getCustomerById(@PathVariable("customerId") long id) {
-		return service.findById(id);
+	public Optional<Customer> getCustomerById(@PathVariable("customerId") long id) {
+		return repo.findById(id);
 	}
 	
 	@GetMapping("/byname/{customerName}")
 	public Customer getCustomerByName(@PathVariable("customerName") String name) {
-		return service.findByName(name);
+		return repo.findByName(name);
 	}
 
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody Customer customer, UriComponentsBuilder uri) {
 		System.out.println("***** customer " + customer);
-//		if (customer.getId()!=0 || customer.getName()==null || customer.getEmail() == null) {
+		if (customer.getId()!=0 || customer.getName()==null || customer.getEmail() == null) {
 //			reject - we'll assign the customer id
-//			return ResponseEntity.badRequest().build();
-//		}
+			return ResponseEntity.badRequest().build();
+		}
 
-		Customer newCustomer = service.save(customer);
+		Customer newCustomer = repo.save(customer);
 		System.out.println("***** new customer " + newCustomer);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(newCustomer.getId()).toUri();
@@ -66,12 +66,12 @@ public class CustomerEndpoint {
 //		return ResponseEntity.ok().build();
 //	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<?> putCustomer(
+			@PathVariable long id,
 			@RequestBody Customer customer) {
-		System.out.println("***** updated customer " + customer);
-		Customer newCustomer = service.save(customer);
-		System.out.println("***** new customer " + newCustomer);
+		System.out.println("***** updated customer " + customer + " customerId: " + id);
+		Customer newCustomer = repo.save(customer);
 		return ResponseEntity.ok().build();
 	}
 	
@@ -79,7 +79,7 @@ public class CustomerEndpoint {
 	public ResponseEntity<?> deleteCustomer(
 		@PathVariable long id) {
 //		System.out.println("***** deleted customerId " + customerId;
-		int results = service.deleteById(id);
+		Long results = repo.deleteById(id);
 		System.out.println("**** customer id deleted: " + id + " - " + results);
 		return ResponseEntity.ok().build();
 	}
