@@ -21,6 +21,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer findById(long id) {
 		return (customerRepository.findById(id)).get();
 	}
+	
+	@Override
+	public Customer findByName(String name) {
+		return (customerRepository.findByName(name));
+	}
 
 	@Override
 	public Customer save(Customer newCustomer) {
