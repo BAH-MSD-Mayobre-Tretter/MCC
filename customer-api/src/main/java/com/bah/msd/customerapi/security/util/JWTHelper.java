@@ -1,4 +1,4 @@
-package com.bah.msd.security.util;
+package com.bah.msd.customerapi.security.util;
 
 import java.util.Date;
 import java.util.Map;

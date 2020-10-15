@@ -1,4 +1,4 @@
-package com.bah.msd.security.util;
+package com.bah.msd.customerapi.security.util;
 
 import java.io.IOException;
 
@@ -26,6 +26,7 @@ public class AuthFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		String uri = req.getRequestURI();
+		System.out.println("filter uri: " + uri);
 		
 		// auth checking will not apply to these cases
 		// token endpoint
@@ -33,12 +34,14 @@ public class AuthFilter implements Filter {
 		// healthcheck endpoint on '/api/'
 		if(   !uri.startsWith("/api/events") 
 	       && !uri.startsWith("/api/registrations")
-	       && !uri.equals("/api/customers")
+	       && !uri.startsWith("/api/customers")
 	       ) {
+			System.out.println("blah blah blah");
 			chain.doFilter(request, response);
 			return;
 			
 		} else {
+			System.out.println("we need authorization here");
 			// check JWT token
 			String authheader = req.getHeader("authorization");
 			if (authheader != null && authheader.length() > 7 && authheader.startsWith("Bearer")) {

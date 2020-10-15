@@ -1,4 +1,4 @@
-package com.bah.msd.security.util;
+package com.bah.msd.customerapi.security.util;
 
 import com.bah.msd.customerapi.domain.Token;
 
