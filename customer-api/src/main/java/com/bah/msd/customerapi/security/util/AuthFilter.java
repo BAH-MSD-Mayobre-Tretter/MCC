@@ -44,10 +44,18 @@ public class AuthFilter implements Filter {
 			System.out.println("we need authorization here");
 			// check JWT token
 			String authheader = req.getHeader("authorization");
+			
+			// System.out.println("authheader is "+ authheader);
+			
 			if (authheader != null && authheader.length() > 7 && authheader.startsWith("Bearer")) {
 				String jwt_token = authheader.substring(7, authheader.length());
+				
+				// System.out.println(jwtUtil.verifyToken(jwt_token));
 				if (jwtUtil.verifyToken(jwt_token)) {
 					String request_scopes = jwtUtil.getScopes(jwt_token);
+					
+					// System.out.println("Compare request scopes " + request_scopes + " with api scope "+ api_scope);
+					
 					if (request_scopes.contains(api_scope)) {
 						// continue on to api
 						chain.doFilter(request, response);
