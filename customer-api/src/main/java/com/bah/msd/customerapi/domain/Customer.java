@@ -1,12 +1,15 @@
 package com.bah.msd.customerapi.domain;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "CUSTOMERS")
 public class Customer {
 	
 	
@@ -14,6 +17,7 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "CUSTOMER_NAME")
 	private String name;
 	private String password;
 	private String email;

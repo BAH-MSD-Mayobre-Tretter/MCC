@@ -1,13 +1,16 @@
 package com.bah.msd.customerapi.domain;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import java.util.Date;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "EVENTS")
 public class Event {
 	
 	@Id
@@ -16,40 +19,46 @@ public class Event {
 	
 	private String title;
 	private String description;
-	private Date event_date;
 	
-	
+	@Column(name = "EVENT_CODE")
+	private String code;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getEvent_date() {
-		return event_date;
+
+	public String getCode() {
+		return code;
 	}
-	public void setEvent_date(Date event_date) {
-		this.event_date = event_date;
+
+	public void setCode(String code) {
+		this.code = code;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", event_date=" + event_date
-				+ "]";
+		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", code=" + code + "]";
 	}
-	
 	
 }
 

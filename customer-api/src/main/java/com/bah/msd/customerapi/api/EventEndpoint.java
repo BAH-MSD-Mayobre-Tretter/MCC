@@ -19,7 +19,7 @@ import com.bah.msd.customerapi.domain.Event;
 import com.bah.msd.customerapi.service.EventService;
 
 @RestController
-@RequestMapping("/api/events")
+@RequestMapping("/events")
 public class EventEndpoint {
 	@Autowired
 	private EventService service;
