@@ -26,22 +26,26 @@ public class AuthFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		String uri = req.getRequestURI();
-		System.out.println("filter uri: " + uri);
+		
+		// System.out.println("filter uri: " + uri);
 		
 		// auth checking will not apply to these cases
 		// token endpoint
 		// user register endpoint
 		// healthcheck endpoint on '/api/'
+		
 		if(   !uri.startsWith("/api/events") 
 	       && !uri.startsWith("/api/registrations")
 	       && !uri.startsWith("/api/customers")
 	       ) {
-			System.out.println("blah blah blah");
+			// System.out.println("blah blah blah");
 			chain.doFilter(request, response);
 			return;
 			
 		} else {
-			System.out.println("we need authorization here");
+			
+			
+			// System.out.println("we need authorization here");
 			// check JWT token
 			String authheader = req.getHeader("authorization");
 			
