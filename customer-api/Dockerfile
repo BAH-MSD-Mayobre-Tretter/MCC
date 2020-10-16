@@ -9,5 +9,5 @@ VOLUME /tmp
 ARG targethost=localhost:8090
 ENV API_HOST=$targethost
 ARG LIBS=app/build/libs
-COPY --from=builder $(LIBS)/ /app/libs
-ENTRYPOINT ["java","-jar","./app/libs/customer-api-0.0.1-SNAPSHOT.jar"]
+COPY --from=builder $(LIBS)/ /app/lib
+ENTRYPOINT ["java","-jar","./app/lib/customer-api-0.0.1-SNAPSHOT.jar"]
