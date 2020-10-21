@@ -1,0 +1,587 @@
+<pre><font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ cd ..
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+4afaf8ef1f2f        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker images
+REPOSITORY                                      TAG                         IMAGE ID            CREATED             SIZE
+react_client                                    v1.0                        889016815502        4 minutes ago       9.05MB
+&lt;none&gt;                                          &lt;none&gt;                      f1ee765f063a        4 minutes ago       350MB
+mhart/alpine-node                               8                           c209849d402e        22 hours ago        68.5MB
+fluentd-node-sample                             latest                      3dcce8002483        27 hours ago        75.1MB
+my-practice-image                               latest                      af8577e79836        2 days ago          72.9MB
+auth-api                                        v1.0                        afff2851309c        5 days ago          148MB
+customer-api                                    v1.0                        aa5fe6ada47f        5 days ago          142MB
+prom/prometheus                                 latest                      7adf5a25557b        6 days ago          168MB
+gradle                                          6.6.1-jdk8                  6ac2d4d8bb65        7 days ago          574MB
+ubuntu                                          latest                      9140108b62dc        3 weeks ago         72.9MB
+k8s.gcr.io/kube-proxy                           v1.19.2                     d373dd5a8593        5 weeks ago         118MB
+k8s.gcr.io/kube-controller-manager              v1.19.2                     8603821e1a7a        5 weeks ago         111MB
+k8s.gcr.io/kube-apiserver                       v1.19.2                     607331163122        5 weeks ago         119MB
+k8s.gcr.io/kube-scheduler                       v1.19.2                     2f32d66b884f        5 weeks ago         45.7MB
+gcr.io/k8s-minikube/storage-provisioner         v3                          bad58561c4be        7 weeks ago         29.7MB
+k8s.gcr.io/etcd                                 3.4.13-0                    0369cf4303ff        7 weeks ago         253MB
+kubernetesui/dashboard                          v2.0.3                      503bc4b7440b        4 months ago        225MB
+k8s.gcr.io/coredns                              1.7.0                       bfe3a36ebd25        4 months ago        45.2MB
+alpine                                          latest                      a24bb4013296        4 months ago        5.57MB
+kubernetesui/metrics-scraper                    v1.0.4                      86262685d9ab        6 months ago        36.9MB
+k8s.gcr.io/pause                                3.2                         80d28bedfe5d        8 months ago        683kB
+hello-world                                     latest                      bf756fb1ae65        9 months ago        13.3kB
+jaegertracing/all-in-one                        1.12.0                      4fc511ccaf35        17 months ago       46.6MB
+openjdk                                         8-jdk-alpine                a3562aa0b991        17 months ago       105MB
+docker.elastic.co/kibana/kibana                 6.5.4                       3c8a8603d365        22 months ago       735MB
+docker.elastic.co/elasticsearch/elasticsearch   6.5.4                       93109ce1d590        22 months ago       774MB
+fluent/fluentd-kubernetes-daemonset             v1.3-debian-elasticsearch   76929cb73738        22 months ago       226MB
+gradle                                          jdk10                       76c6cec60058        23 months ago       1.08GB
+node                                            10.11.0-alpine              5206c0dd451a        2 years ago         69.9MB
+gcr.io/google-samples/kubernetes-bootcamp       v1                          8fafd8af70e9        4 years ago         211MB
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker start react-client
+Error response from daemon: No such container: react-client
+Error: failed to start containers: react-client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+4afaf8ef1f2f        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker run -d --name react-client -p 3000:80 react_client:v1.0
+13a6938c631915b2a8fe1df1a8b299a731b9d156cf503e3e5bf6db0740949faf
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+13a6938c6319        react_client:v1.0   &quot;nginx -g &apos;daemon of…&quot;   5 seconds ago       Exited (1) 3 seconds ago                        react-client
+4afaf8ef1f2f        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Exited (143) 47 hours ago                       customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker logs
+&quot;docker logs&quot; requires exactly 1 argument.
+See &apos;docker logs --help&apos;.
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker logs react-client
+nginx: [emerg] no host in upstream &quot;/10.104.111.92:8081&quot; in /etc/nginx/conf.d/default.conf:23
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+23ccd4d5d20d        bridge              bridge              local
+cc8274c6f31f        host                host                local
+19889904902c        mcc-network         bridge              local
+1c9cc63dce51        none                null                local
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker inspect mcc-network
+[
+    {
+        &quot;Name&quot;: &quot;mcc-network&quot;,
+        &quot;Id&quot;: &quot;19889904902ca5eb17e9543c49fcc9287ccf1e7b1ae07390e3552634a58fdcd7&quot;,
+        &quot;Created&quot;: &quot;2020-10-16T13:38:28.014398847-04:00&quot;,
+        &quot;Scope&quot;: &quot;local&quot;,
+        &quot;Driver&quot;: &quot;bridge&quot;,
+        &quot;EnableIPv6&quot;: false,
+        &quot;IPAM&quot;: {
+            &quot;Driver&quot;: &quot;default&quot;,
+            &quot;Options&quot;: {},
+            &quot;Config&quot;: [
+                {
+                    &quot;Subnet&quot;: &quot;172.18.0.0/16&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;
+                }
+            ]
+        },
+        &quot;Internal&quot;: false,
+        &quot;Attachable&quot;: false,
+        &quot;Ingress&quot;: false,
+        &quot;ConfigFrom&quot;: {
+            &quot;Network&quot;: &quot;&quot;
+        },
+        &quot;ConfigOnly&quot;: false,
+        &quot;Containers&quot;: {},
+        &quot;Options&quot;: {},
+        &quot;Labels&quot;: {}
+    }
+]
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker start customer-api
+customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker start auth
+auth
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker stop auth
+auth
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker inspect mcc-network
+[
+    {
+        &quot;Name&quot;: &quot;mcc-network&quot;,
+        &quot;Id&quot;: &quot;19889904902ca5eb17e9543c49fcc9287ccf1e7b1ae07390e3552634a58fdcd7&quot;,
+        &quot;Created&quot;: &quot;2020-10-16T13:38:28.014398847-04:00&quot;,
+        &quot;Scope&quot;: &quot;local&quot;,
+        &quot;Driver&quot;: &quot;bridge&quot;,
+        &quot;EnableIPv6&quot;: false,
+        &quot;IPAM&quot;: {
+            &quot;Driver&quot;: &quot;default&quot;,
+            &quot;Options&quot;: {},
+            &quot;Config&quot;: [
+                {
+                    &quot;Subnet&quot;: &quot;172.18.0.0/16&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;
+                }
+            ]
+        },
+        &quot;Internal&quot;: false,
+        &quot;Attachable&quot;: false,
+        &quot;Ingress&quot;: false,
+        &quot;ConfigFrom&quot;: {
+            &quot;Network&quot;: &quot;&quot;
+        },
+        &quot;ConfigOnly&quot;: false,
+        &quot;Containers&quot;: {
+            &quot;e637f198fce7bd4842a4a52a5d996e41824e206d73b44d5c1790ecbd64e7a8cb&quot;: {
+                &quot;Name&quot;: &quot;customer-api&quot;,
+                &quot;EndpointID&quot;: &quot;5eb799c9f4322ce1cce0ed9921173d4bca613be66e53efa4fb99ed549385db1c&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+        },
+        &quot;Options&quot;: {},
+        &quot;Labels&quot;: {}
+    }
+]
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ ^C
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker rm auth
+auth
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                    NAMES
+13a6938c6319        react_client:v1.0   &quot;nginx -g &apos;daemon of…&quot;   6 minutes ago       Exited (1) 6 minutes ago                            react-client
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 2 minutes               0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker run -d --name auth -p 8081:8081 --env API_HOST=172.18.0.2:8080 172.18.0.2:8080 auth-api:v1.0
+Unable to find image &apos;172.18.0.2:8080&apos; locally
+docker: Error response from daemon: pull access denied for 172.18.0.2, repository does not exist or may require &apos;docker login&apos;: denied: requested access to the resource is denied.
+See &apos;docker run --help&apos;.
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker run -d --name auth -p 8081:8081 --env API_HOST=172.18.0.2:8080 auth-api:v1.0
+4b9fc9ab6f6dc9c8c2a594688267db6e5976a79213f3fa8d4bdebede9db63293
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                    NAMES
+4b9fc9ab6f6d        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   6 seconds ago       Up 4 seconds               0.0.0.0:8081-&gt;8081/tcp   auth
+13a6938c6319        react_client:v1.0   &quot;nginx -g &apos;daemon of…&quot;   8 minutes ago       Exited (1) 8 minutes ago                            react-client
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 5 minutes               0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker network connect mcc-network auth
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker inspect mcc-network
+[
+    {
+        &quot;Name&quot;: &quot;mcc-network&quot;,
+        &quot;Id&quot;: &quot;19889904902ca5eb17e9543c49fcc9287ccf1e7b1ae07390e3552634a58fdcd7&quot;,
+        &quot;Created&quot;: &quot;2020-10-16T13:38:28.014398847-04:00&quot;,
+        &quot;Scope&quot;: &quot;local&quot;,
+        &quot;Driver&quot;: &quot;bridge&quot;,
+        &quot;EnableIPv6&quot;: false,
+        &quot;IPAM&quot;: {
+            &quot;Driver&quot;: &quot;default&quot;,
+            &quot;Options&quot;: {},
+            &quot;Config&quot;: [
+                {
+                    &quot;Subnet&quot;: &quot;172.18.0.0/16&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;
+                }
+            ]
+        },
+        &quot;Internal&quot;: false,
+        &quot;Attachable&quot;: false,
+        &quot;Ingress&quot;: false,
+        &quot;ConfigFrom&quot;: {
+            &quot;Network&quot;: &quot;&quot;
+        },
+        &quot;ConfigOnly&quot;: false,
+        &quot;Containers&quot;: {
+            &quot;4b9fc9ab6f6dc9c8c2a594688267db6e5976a79213f3fa8d4bdebede9db63293&quot;: {
+                &quot;Name&quot;: &quot;auth&quot;,
+                &quot;EndpointID&quot;: &quot;2f931661d990ae0a020e55b69ef046162c62f1f59c95914c2f6178e085cb027f&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:03&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.3/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            },
+            &quot;e637f198fce7bd4842a4a52a5d996e41824e206d73b44d5c1790ecbd64e7a8cb&quot;: {
+                &quot;Name&quot;: &quot;customer-api&quot;,
+                &quot;EndpointID&quot;: &quot;5eb799c9f4322ce1cce0ed9921173d4bca613be66e53efa4fb99ed549385db1c&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+        },
+        &quot;Options&quot;: {},
+        &quot;Labels&quot;: {}
+    }
+]
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker rm react-client
+react-client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker images
+REPOSITORY                                      TAG                         IMAGE ID            CREATED             SIZE
+react_client                                    v1.0                        889016815502        17 minutes ago      9.05MB
+&lt;none&gt;                                          &lt;none&gt;                      f1ee765f063a        18 minutes ago      350MB
+mhart/alpine-node                               8                           c209849d402e        22 hours ago        68.5MB
+fluentd-node-sample                             latest                      3dcce8002483        27 hours ago        75.1MB
+my-practice-image                               latest                      af8577e79836        2 days ago          72.9MB
+auth-api                                        v1.0                        afff2851309c        5 days ago          148MB
+customer-api                                    v1.0                        aa5fe6ada47f        5 days ago          142MB
+prom/prometheus                                 latest                      7adf5a25557b        6 days ago          168MB
+gradle                                          6.6.1-jdk8                  6ac2d4d8bb65        7 days ago          574MB
+ubuntu                                          latest                      9140108b62dc        3 weeks ago         72.9MB
+k8s.gcr.io/kube-proxy                           v1.19.2                     d373dd5a8593        5 weeks ago         118MB
+k8s.gcr.io/kube-controller-manager              v1.19.2                     8603821e1a7a        5 weeks ago         111MB
+k8s.gcr.io/kube-apiserver                       v1.19.2                     607331163122        5 weeks ago         119MB
+k8s.gcr.io/kube-scheduler                       v1.19.2                     2f32d66b884f        5 weeks ago         45.7MB
+gcr.io/k8s-minikube/storage-provisioner         v3                          bad58561c4be        7 weeks ago         29.7MB
+k8s.gcr.io/etcd                                 3.4.13-0                    0369cf4303ff        7 weeks ago         253MB
+kubernetesui/dashboard                          v2.0.3                      503bc4b7440b        4 months ago        225MB
+k8s.gcr.io/coredns                              1.7.0                       bfe3a36ebd25        4 months ago        45.2MB
+alpine                                          latest                      a24bb4013296        4 months ago        5.57MB
+kubernetesui/metrics-scraper                    v1.0.4                      86262685d9ab        6 months ago        36.9MB
+k8s.gcr.io/pause                                3.2                         80d28bedfe5d        8 months ago        683kB
+hello-world                                     latest                      bf756fb1ae65        9 months ago        13.3kB
+jaegertracing/all-in-one                        1.12.0                      4fc511ccaf35        17 months ago       46.6MB
+openjdk                                         8-jdk-alpine                a3562aa0b991        17 months ago       105MB
+docker.elastic.co/kibana/kibana                 6.5.4                       3c8a8603d365        22 months ago       735MB
+docker.elastic.co/elasticsearch/elasticsearch   6.5.4                       93109ce1d590        22 months ago       774MB
+fluent/fluentd-kubernetes-daemonset             v1.3-debian-elasticsearch   76929cb73738        22 months ago       226MB
+gradle                                          jdk10                       76c6cec60058        23 months ago       1.08GB
+node                                            10.11.0-alpine              5206c0dd451a        2 years ago         69.9MB
+gcr.io/google-samples/kubernetes-bootcamp       v1                          8fafd8af70e9        4 years ago         211MB
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker rmi react_client:v1.0
+Untagged: react_client:v1.0
+Deleted: sha256:889016815502335c66e68ae3224e1fdbc7f6292fe1309d494212c43ca3023f9f
+Deleted: sha256:622adfb3eb8448f055acc808d310312c3582346d1d6ccfe79b4bef26804dd84b
+Deleted: sha256:4ffc55c4ed695cabf899445d176157d4b19928e59e9280c3e35698a508c8c957
+Deleted: sha256:7a24740c44202a0f568a677b956ca61c2e755622fde5a75ea163c0b464c9603a
+Deleted: sha256:fc2c6496e812cd369a139702c4ea078a6d7a478cbbe6035eef627f590faa5677
+Deleted: sha256:4966bd707d38627f0aa2801f16de6566fa2cd617570ff631725bc068ba88c043
+Deleted: sha256:e9b8d3e739870b4b04ab163491ed247671443a919b106ba54d0223dbf2521e7b
+Deleted: sha256:900c3c0dffa18583253b2ac6e3411aa96dd1eaa9b72e9ea78ccc54704517b3e3
+Deleted: sha256:1f7b363b2c32a4e71c5c2c41ae641cbba9c68933a25d6edfa797a56f70cca7fe
+Deleted: sha256:14861e7d3b8c9f4c2e1b85b12dedfa43c78ca877178550a76d9fc827d961b0a7
+Deleted: sha256:e6aa99def0778257205e57f3d83089a1e9db3f9a4ec6e7a4187d221c63fd8206
+Deleted: sha256:b3a13170e35557710237fcef1cced43678a37a6ca7004448e6699a3d22cbbfea
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+4b9fc9ab6f6d        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   2 minutes ago       Up 2 minutes        0.0.0.0:8081-&gt;8081/tcp   auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 7 minutes        0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker images
+REPOSITORY                                      TAG                         IMAGE ID            CREATED             SIZE
+&lt;none&gt;                                          &lt;none&gt;                      f1ee765f063a        21 minutes ago      350MB
+mhart/alpine-node                               8                           c209849d402e        22 hours ago        68.5MB
+fluentd-node-sample                             latest                      3dcce8002483        27 hours ago        75.1MB
+my-practice-image                               latest                      af8577e79836        2 days ago          72.9MB
+auth-api                                        v1.0                        afff2851309c        5 days ago          148MB
+customer-api                                    v1.0                        aa5fe6ada47f        5 days ago          142MB
+prom/prometheus                                 latest                      7adf5a25557b        6 days ago          168MB
+gradle                                          6.6.1-jdk8                  6ac2d4d8bb65        7 days ago          574MB
+ubuntu                                          latest                      9140108b62dc        3 weeks ago         72.9MB
+k8s.gcr.io/kube-proxy                           v1.19.2                     d373dd5a8593        5 weeks ago         118MB
+k8s.gcr.io/kube-apiserver                       v1.19.2                     607331163122        5 weeks ago         119MB
+k8s.gcr.io/kube-controller-manager              v1.19.2                     8603821e1a7a        5 weeks ago         111MB
+k8s.gcr.io/kube-scheduler                       v1.19.2                     2f32d66b884f        5 weeks ago         45.7MB
+gcr.io/k8s-minikube/storage-provisioner         v3                          bad58561c4be        7 weeks ago         29.7MB
+k8s.gcr.io/etcd                                 3.4.13-0                    0369cf4303ff        7 weeks ago         253MB
+kubernetesui/dashboard                          v2.0.3                      503bc4b7440b        4 months ago        225MB
+k8s.gcr.io/coredns                              1.7.0                       bfe3a36ebd25        4 months ago        45.2MB
+alpine                                          latest                      a24bb4013296        4 months ago        5.57MB
+kubernetesui/metrics-scraper                    v1.0.4                      86262685d9ab        6 months ago        36.9MB
+k8s.gcr.io/pause                                3.2                         80d28bedfe5d        8 months ago        683kB
+hello-world                                     latest                      bf756fb1ae65        9 months ago        13.3kB
+jaegertracing/all-in-one                        1.12.0                      4fc511ccaf35        17 months ago       46.6MB
+openjdk                                         8-jdk-alpine                a3562aa0b991        17 months ago       105MB
+docker.elastic.co/kibana/kibana                 6.5.4                       3c8a8603d365        22 months ago       735MB
+docker.elastic.co/elasticsearch/elasticsearch   6.5.4                       93109ce1d590        22 months ago       774MB
+fluent/fluentd-kubernetes-daemonset             v1.3-debian-elasticsearch   76929cb73738        22 months ago       226MB
+gradle                                          jdk10                       76c6cec60058        23 months ago       1.08GB
+node                                            10.11.0-alpine              5206c0dd451a        2 years ago         69.9MB
+gcr.io/google-samples/kubernetes-bootcamp       v1                          8fafd8af70e9        4 years ago         211MB
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker run -d --name react-client -p 3000:80 react_client:v1.0
+Unable to find image &apos;react_client:v1.0&apos; locally
+docker: Error response from daemon: pull access denied for react_client, repository does not exist or may require &apos;docker login&apos;: denied: requested access to the resource is denied.
+See &apos;docker run --help&apos;.
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ docker build -t react_client:v1.0 .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /home/osboxes/project/Dockerfile: no such file or directory
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ ls
+<font color="#3465A4"><b>MCC</b></font>  <font color="#3465A4"><b>project-react-client</b></font>  <font color="#3465A4"><b>security</b></font>
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project</b></font>$ cd project-react-client/
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker build -t react_client:v1.0 .
+Sending build context to Docker daemon  1.295MB
+Step 1/14 : FROM mhart/alpine-node:8 AS build-env
+ ---&gt; c209849d402e
+Step 2/14 : RUN apk update
+ ---&gt; Using cache
+ ---&gt; 24f0431b74f4
+Step 3/14 : WORKDIR /app
+ ---&gt; Using cache
+ ---&gt; a2e04a1f16ab
+Step 4/14 : COPY . .
+ ---&gt; 3e46110611ef
+Step 5/14 : RUN yarn install --production
+ ---&gt; Running in e9767b920363
+yarn install v1.22.10
+info No lockfile found.
+<font color="#EF2929">warning package-lock.json found. Your project contains lock files generated by tools other than Yarn. It is advised not to mix package managers in order to avoid resolution inconsistencies caused by unsynchronized lock files. To clear this warning, remove package-lock.json.</font>
+[1/4] Resolving packages...
+<font color="#EF2929">warning http-proxy-middleware &gt; micromatch &gt; snapdragon &gt; source-map-resolve &gt; resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated</font>
+<font color="#EF2929">warning http-proxy-middleware &gt; micromatch &gt; snapdragon &gt; source-map-resolve &gt; urix@0.1.0: Please see https://github.com/lydell/urix#deprecated</font>
+<font color="#EF2929">warning react-scripts &gt; eslint-loader@2.1.2: This loader has been deprecated. Please use eslint-webpack-plugin</font>
+<font color="#EF2929">warning react-scripts &gt; fsevents@2.0.6: Please update: there are crash fixes</font>
+<font color="#EF2929">warning react-scripts &gt; webpack-dev-server &gt; chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.</font>
+<font color="#EF2929">warning react-scripts &gt; react-dev-utils &gt; fork-ts-checker-webpack-plugin &gt; chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.</font>
+<font color="#EF2929">warning react-scripts &gt; webpack-dev-server &gt; chokidar &gt; fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.</font>
+<font color="#EF2929">warning react-scripts &gt; babel-jest &gt; @jest/transform &gt; jest-haste-map &gt; fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.</font>
+<font color="#EF2929">warning react-scripts &gt; jest-environment-jsdom-fourteen &gt; jsdom &gt; request-promise-native@1.0.9: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142</font>
+<font color="#EF2929">warning react-scripts &gt; jest-environment-jsdom-fourteen &gt; jsdom &gt; request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi@15.1.1: joi is leaving the @hapi organization and moving back to &apos;joi&apos; (https://github.com/sideway/joi/issues/2411)</font>
+<font color="#EF2929">warning react-scripts &gt; webpack &gt; watchpack &gt; watchpack-chokidar2 &gt; chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.</font>
+<font color="#EF2929">warning react-scripts &gt; jest &gt; jest-cli &gt; jest-config &gt; jest-environment-jsdom &gt; jsdom &gt; request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142</font>
+<font color="#EF2929">warning react-scripts &gt; jest &gt; jest-cli &gt; jest-config &gt; jest-environment-jsdom &gt; jsdom &gt; request-promise-native@1.0.9: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142</font>
+<font color="#EF2929">warning react-scripts &gt; jest-environment-jsdom-fourteen &gt; jsdom &gt; request &gt; har-validator@5.1.5: this library is no longer supported</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi &gt; @hapi/hoek@8.5.1: This version has been deprecated and is no longer supported or maintained</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi &gt; @hapi/address@2.1.4: This version has been deprecated and is no longer supported or maintained</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi &gt; @hapi/bourne@1.3.2: This version has been deprecated and is no longer supported or maintained</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi &gt; @hapi/topo@3.1.6: This version has been deprecated and is no longer supported or maintained</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; @hapi/joi &gt; @hapi/topo &gt; @hapi/hoek@8.5.1: This version has been deprecated and is no longer supported or maintained</font>
+<font color="#EF2929">warning react-scripts &gt; jest &gt; jest-cli &gt; jest-config &gt; jest-environment-jsdom &gt; jsdom &gt; left-pad@1.3.0: use String.prototype.padStart()</font>
+<font color="#EF2929">warning react-scripts &gt; workbox-webpack-plugin &gt; workbox-build &gt; strip-comments &gt; babel-plugin-transform-object-rest-spread &gt; babel-runtime &gt; core-js@2.6.11: core-js@&lt;3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.</font>
+[2/4] Fetching packages...
+<font color="#EF2929">warning mini-css-extract-plugin@0.5.0: Invalid bin field for &quot;mini-css-extract-plugin&quot;.</font>
+<font color="#EF2929">warning url-loader@1.1.2: Invalid bin field for &quot;url-loader&quot;.</font>
+info fsevents@2.0.6: The platform &quot;linux&quot; is incompatible with this module.
+info &quot;fsevents@2.0.6&quot; is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.13: The platform &quot;linux&quot; is incompatible with this module.
+info &quot;fsevents@1.2.13&quot; is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@2.1.3: The platform &quot;linux&quot; is incompatible with this module.
+info &quot;fsevents@2.1.3&quot; is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+<font color="#EF2929">warning &quot; &gt; bootstrap@4.5.3&quot; has unmet peer dependency &quot;jquery@1.9.1 - 3&quot;.</font>
+<font color="#EF2929">warning &quot; &gt; bootstrap@4.5.3&quot; has unmet peer dependency &quot;popper.js@^1.16.1&quot;.</font>
+<font color="#EF2929">warning &quot;react-scripts &gt; @typescript-eslint/parser@1.6.0&quot; has unmet peer dependency &quot;typescript@*&quot;.</font>
+<font color="#EF2929">warning &quot;react-scripts &gt; @typescript-eslint/eslint-plugin@1.6.0&quot; has unmet peer dependency &quot;typescript@*&quot;.</font>
+<font color="#EF2929">warning &quot;react-scripts &gt; @typescript-eslint/eslint-plugin &gt; tsutils@3.17.1&quot; has unmet peer dependency &quot;typescript@&gt;=2.8.0 || &gt;= 3.2.0-dev || &gt;= 3.3.0-dev || &gt;= 3.4.0-dev || &gt;= 3.5.0-dev || &gt;= 3.6.0-dev || &gt;= 3.6.0-beta || &gt;= 3.7.0-dev || &gt;= 3.7.0-beta&quot;.</font>
+<font color="#EF2929">warning &quot;react-scripts &gt; @typescript-eslint/parser &gt; @typescript-eslint/typescript-estree@1.6.0&quot; has unmet peer dependency &quot;typescript@*&quot;.</font>
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 88.89s.
+Removing intermediate container e9767b920363
+ ---&gt; b7adb5c14d82
+Step 6/14 : RUN yarn build
+ ---&gt; Running in ba768e0b6109
+yarn run v1.22.10
+$ react-scripts build
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  52.61 KB  build/static/js/2.2ae1e872.chunk.js
+  22.54 KB  build/static/css/2.6414bb7b.chunk.css
+  5.97 KB   build/static/js/main.e6569942.chunk.js
+  762 B     build/static/js/runtime~main.a8a9905a.js
+  509 B     build/static/css/main.6960f729.chunk.css
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  &quot;homepage&quot; : &quot;http://myname.github.io/myapp&quot;,
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://bit.ly/CRA-deploy
+
+Done in 40.87s.
+Removing intermediate container ba768e0b6109
+ ---&gt; 3c5c5bdae6cf
+Step 7/14 : FROM alpine
+ ---&gt; a24bb4013296
+Step 8/14 : RUN apk update &amp;&amp; apk add ca-certificates nginx &amp;&amp; rm -rf /var/cache/apk/*
+ ---&gt; Running in 3f53313c2b67
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/APKINDEX.tar.gz
+v3.12.0-463-g5efa865e42 [http://dl-cdn.alpinelinux.org/alpine/v3.12/main]
+v3.12.0-462-g579b6240e1 [http://dl-cdn.alpinelinux.org/alpine/v3.12/community]
+OK: 12750 distinct packages available
+(1/3) Installing ca-certificates (20191127-r4)
+(2/3) Installing pcre (8.44-r0)
+(3/3) Installing nginx (1.18.0-r1)
+Executing nginx-1.18.0-r1.pre-install
+Executing busybox-1.31.1-r16.trigger
+Executing ca-certificates-20191127-r4.trigger
+OK: 8 MiB in 17 packages
+Removing intermediate container 3f53313c2b67
+ ---&gt; c694abe7ad38
+Step 9/14 : RUN mkdir /run/nginx &amp;&amp; touch /run/nginx/nginx.pid
+ ---&gt; Running in 0b6bda2d065b
+Removing intermediate container 0b6bda2d065b
+ ---&gt; cc9e5eb8e907
+Step 10/14 : WORKDIR /app
+ ---&gt; Running in 043d1a179d5f
+Removing intermediate container 043d1a179d5f
+ ---&gt; 027a75a7bd86
+Step 11/14 : COPY --from=build-env /app/build /app
+ ---&gt; 3524e92b3e0f
+Step 12/14 : COPY ./default.conf /etc/nginx/conf.d/default.conf
+ ---&gt; 62d2278c8a39
+Step 13/14 : EXPOSE 80
+ ---&gt; Running in c7d3cbd9106b
+Removing intermediate container c7d3cbd9106b
+ ---&gt; baff1430abe9
+Step 14/14 : CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
+ ---&gt; Running in 1e00e12c6fb7
+Removing intermediate container 1e00e12c6fb7
+ ---&gt; 26bb9dfda190
+Successfully built 26bb9dfda190
+Successfully tagged react_client:v1.0
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker start react_client
+Error response from daemon: No such container: react_client
+Error: failed to start containers: react_client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker start react_client:v1.0
+Error response from daemon: No such container: react_client:v1.0
+Error: failed to start containers: react_client:v1.0
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+4b9fc9ab6f6d        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   10 minutes ago      Up 10 minutes       0.0.0.0:8081-&gt;8081/tcp   auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 15 minutes       0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker start react
+Error response from daemon: No such container: react
+Error: failed to start containers: react
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker image
+
+Usage:	docker image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run &apos;docker image COMMAND --help&apos; for more information on a command.
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker images
+REPOSITORY                                      TAG                         IMAGE ID            CREATED              SIZE
+react_client                                    v1.0                        26bb9dfda190        About a minute ago   9.05MB
+&lt;none&gt;                                          &lt;none&gt;                      3c5c5bdae6cf        About a minute ago   351MB
+&lt;none&gt;                                          &lt;none&gt;                      f1ee765f063a        27 minutes ago       350MB
+mhart/alpine-node                               8                           c209849d402e        22 hours ago         68.5MB
+fluentd-node-sample                             latest                      3dcce8002483        27 hours ago         75.1MB
+my-practice-image                               latest                      af8577e79836        2 days ago           72.9MB
+auth-api                                        v1.0                        afff2851309c        5 days ago           148MB
+customer-api                                    v1.0                        aa5fe6ada47f        5 days ago           142MB
+prom/prometheus                                 latest                      7adf5a25557b        6 days ago           168MB
+gradle                                          6.6.1-jdk8                  6ac2d4d8bb65        7 days ago           574MB
+ubuntu                                          latest                      9140108b62dc        3 weeks ago          72.9MB
+k8s.gcr.io/kube-proxy                           v1.19.2                     d373dd5a8593        5 weeks ago          118MB
+k8s.gcr.io/kube-apiserver                       v1.19.2                     607331163122        5 weeks ago          119MB
+k8s.gcr.io/kube-controller-manager              v1.19.2                     8603821e1a7a        5 weeks ago          111MB
+k8s.gcr.io/kube-scheduler                       v1.19.2                     2f32d66b884f        5 weeks ago          45.7MB
+gcr.io/k8s-minikube/storage-provisioner         v3                          bad58561c4be        7 weeks ago          29.7MB
+k8s.gcr.io/etcd                                 3.4.13-0                    0369cf4303ff        7 weeks ago          253MB
+kubernetesui/dashboard                          v2.0.3                      503bc4b7440b        4 months ago         225MB
+k8s.gcr.io/coredns                              1.7.0                       bfe3a36ebd25        4 months ago         45.2MB
+alpine                                          latest                      a24bb4013296        4 months ago         5.57MB
+kubernetesui/metrics-scraper                    v1.0.4                      86262685d9ab        6 months ago         36.9MB
+k8s.gcr.io/pause                                3.2                         80d28bedfe5d        8 months ago         683kB
+hello-world                                     latest                      bf756fb1ae65        9 months ago         13.3kB
+jaegertracing/all-in-one                        1.12.0                      4fc511ccaf35        17 months ago        46.6MB
+openjdk                                         8-jdk-alpine                a3562aa0b991        17 months ago        105MB
+docker.elastic.co/kibana/kibana                 6.5.4                       3c8a8603d365        22 months ago        735MB
+docker.elastic.co/elasticsearch/elasticsearch   6.5.4                       93109ce1d590        22 months ago        774MB
+fluent/fluentd-kubernetes-daemonset             v1.3-debian-elasticsearch   76929cb73738        22 months ago        226MB
+gradle                                          jdk10                       76c6cec60058        23 months ago        1.08GB
+node                                            10.11.0-alpine              5206c0dd451a        2 years ago          69.9MB
+gcr.io/google-samples/kubernetes-bootcamp       v1                          8fafd8af70e9        4 years ago          211MB
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker run -d --name react-client -p 3000:80 react_client:v1.0
+fe049226d2d49c384f9a39b97414a4a3e6e70cc79ced8d9b33b438e2c0f9bb29
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+fe049226d2d4        react_client:v1.0   &quot;nginx -g &apos;daemon of…&quot;   5 seconds ago       Up 3 seconds        0.0.0.0:3000-&gt;80/tcp     react-client
+4b9fc9ab6f6d        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   11 minutes ago      Up 11 minutes       0.0.0.0:8081-&gt;8081/tcp   auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 17 minutes       0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker network connect mcc-network react_client:v1.0
+Error response from daemon: No such container: react_client:v1.0
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker start react_client
+Error response from daemon: No such container: react_client
+Error: failed to start containers: react_client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker network connect mcc-network react_client
+Error response from daemon: No such container: react_client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+fe049226d2d4        react_client:v1.0   &quot;nginx -g &apos;daemon of…&quot;   53 seconds ago      Up 51 seconds       0.0.0.0:3000-&gt;80/tcp     react-client
+4b9fc9ab6f6d        auth-api:v1.0       &quot;java -jar ./app/lib…&quot;   12 minutes ago      Up 12 minutes       0.0.0.0:8081-&gt;8081/tcp   auth
+e637f198fce7        customer-api:v1.0   &quot;java -jar ./app/lib…&quot;   5 days ago          Up 17 minutes       0.0.0.0:8080-&gt;8080/tcp   customer-api
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker network connect mcc-network react-client
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ docker inspect mcc-network
+[
+    {
+        &quot;Name&quot;: &quot;mcc-network&quot;,
+        &quot;Id&quot;: &quot;19889904902ca5eb17e9543c49fcc9287ccf1e7b1ae07390e3552634a58fdcd7&quot;,
+        &quot;Created&quot;: &quot;2020-10-16T13:38:28.014398847-04:00&quot;,
+        &quot;Scope&quot;: &quot;local&quot;,
+        &quot;Driver&quot;: &quot;bridge&quot;,
+        &quot;EnableIPv6&quot;: false,
+        &quot;IPAM&quot;: {
+            &quot;Driver&quot;: &quot;default&quot;,
+            &quot;Options&quot;: {},
+            &quot;Config&quot;: [
+                {
+                    &quot;Subnet&quot;: &quot;172.18.0.0/16&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;
+                }
+            ]
+        },
+        &quot;Internal&quot;: false,
+        &quot;Attachable&quot;: false,
+        &quot;Ingress&quot;: false,
+        &quot;ConfigFrom&quot;: {
+            &quot;Network&quot;: &quot;&quot;
+        },
+        &quot;ConfigOnly&quot;: false,
+        &quot;Containers&quot;: {
+            &quot;4b9fc9ab6f6dc9c8c2a594688267db6e5976a79213f3fa8d4bdebede9db63293&quot;: {
+                &quot;Name&quot;: &quot;auth&quot;,
+                &quot;EndpointID&quot;: &quot;2f931661d990ae0a020e55b69ef046162c62f1f59c95914c2f6178e085cb027f&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:03&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.3/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            },
+            &quot;e637f198fce7bd4842a4a52a5d996e41824e206d73b44d5c1790ecbd64e7a8cb&quot;: {
+                &quot;Name&quot;: &quot;customer-api&quot;,
+                &quot;EndpointID&quot;: &quot;5eb799c9f4322ce1cce0ed9921173d4bca613be66e53efa4fb99ed549385db1c&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            },
+            &quot;fe049226d2d49c384f9a39b97414a4a3e6e70cc79ced8d9b33b438e2c0f9bb29&quot;: {
+                &quot;Name&quot;: &quot;react-client&quot;,
+                &quot;EndpointID&quot;: &quot;710435efc947e750416e5ab8de0959867b396c0622b170204d949c046cd3cab2&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:04&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.4/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+        },
+        &quot;Options&quot;: {},
+        &quot;Labels&quot;: {}
+    }
+]
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ ^C
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ ^C
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ kubectl get services
+error: error loading config file &quot;/home/osboxes/.kube/config&quot;: open /home/osboxes/.kube/config: permission denied
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ sudo kubectl get services
+[sudo] password for osboxes: 
+error: the server doesn&apos;t have a resource type &quot;services&quot;
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ kubectl get svc
+error: error loading config file &quot;/home/osboxes/.kube/config&quot;: open /home/osboxes/.kube/config: permission denied
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ sudo kubectl get svc
+error: the server doesn&apos;t have a resource type &quot;svc&quot;
+<font color="#4E9A06"><b>osboxes@osboxes</b></font>:<font color="#3465A4"><b>~/project/project-react-client</b></font>$ 
+</pre>
