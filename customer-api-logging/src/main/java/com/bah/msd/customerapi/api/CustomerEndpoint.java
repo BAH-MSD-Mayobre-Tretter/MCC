@@ -19,15 +19,24 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.bah.msd.customerapi.domain.Customer;
 import com.bah.msd.customerapi.respository.CustomerRepository;
 
+import io.opentracing.Span;
+import io.opentracing.Tracer;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerEndpoint {
 
 	@Autowired
 	CustomerRepository repo;
+	
+	@Autowired
+	private Tracer tracer;
 
 	@GetMapping
 	public Iterable<Customer> all() {
+		Span span = tracer.buildSpan("get all customers").start();
+		span.setTag("http.status_code", 403);
+		span.finish();
 		return repo.findAll();
 	}
 
